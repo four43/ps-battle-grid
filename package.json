@@ -13,5 +13,11 @@
     "images"
   ],
   "author": "Seth Miller <seth@four43.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "debug": "^2.2.0"
+  },
+  "devDependencies": {
+    "nock": "^3.3.2"
+  }
 }
