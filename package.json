@@ -15,7 +15,9 @@
   "author": "Seth Miller <seth@four43.com>",
   "license": "ISC",
   "dependencies": {
-    "debug": "^2.2.0"
+    "debug": "^2.2.0",
+    "handlebars": "^4.0.5",
+    "moment": "^2.10.6"
   },
   "devDependencies": {
     "nock": "^3.3.2"
