@@ -39,9 +39,16 @@ describe("Comment Repo", function () {
 		nock.enableNetConnect();
 	});
 
-	it("Should return non stickied posts", function (done) {
+	it("Should return only image based posts", function (done) {
 		commentRepo.findByPost(postA, function (err, comments) {
 			assert.equal(comments.length, 23);
+			done();
+		});
+	});
+
+	it("Should return only image based posts B", function (done) {
+		commentRepo.findByPost(postB, function (err, comments) {
+			assert.equal(comments.length, 50);
 			done();
 		});
 	});
