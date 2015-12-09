@@ -51,6 +51,13 @@ describe("Comment", function() {
 			assert.equal(parts.bodyText, "Just watching the world burn");
 			assert.equal(parts.images.source.url, "https://i.imgur.com/qHDJ0SP.jpg");
 			assert.equal(parts.images.thumb.url, "https://i.imgur.com/qHDJ0SP.jpg");
-		})
+		});
+
+		it("Should parse /new endings", function() {
+			var parts = Comment._parseBody("[Don't make Mr. Fox Choke a bitch](http://imgur.com/gallery/c5EoP9E/new)");
+			assert.equal(parts.bodyText, "Don't make Mr. Fox Choke a bitch");
+			assert.equal(parts.images.source.url, "https://i.imgur.com/c5EoP9E.jpg");
+			assert.equal(parts.images.thumb.url, "https://i.imgur.com/c5EoP9E.jpg");
+		});
 	});
 });
