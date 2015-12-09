@@ -18,6 +18,13 @@ describe("Contnet", function() {
 			assert.equal(parts.images.thumb.url, "https://i.imgur.com/MpPlMK5m.jpg");
 		});
 
+		it("Should parse mobile imgur links", function() {
+			var parts = Content.parseBody("Here is what I came up [with](http://m.imgur.com/MpPlMK5.png)");
+			assert.equal(parts.bodyText, "Here is what I came up with");
+			assert.equal(parts.images.source.url, "https://i.imgur.com/MpPlMK5.jpg");
+			assert.equal(parts.images.thumb.url, "https://i.imgur.com/MpPlMK5m.jpg");
+		});
+
 		it("Should parse basic full body link with pre and post text", function() {
 			var parts = Content.parseBody("Here is what I came up [with](http://i.imgur.com/MpPlMK5.png), pretty cool huh?");
 			assert.equal(parts.bodyText, "Here is what I came up with, pretty cool huh?");
