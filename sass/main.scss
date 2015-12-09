@@ -1,0 +1,32 @@
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+.row-container {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  height: 20rem;
+  margin-bottom: 0.5rem;
+}
+
+.row {
+  height: 100%;
+  overflow-x: scroll;
+  overflow-scrolling: touch;
+  -webkit-overflow-scrolling: touch;
+
+  white-space: nowrap;
+}
+
+.row-elem {
+  display: inline-block;
+  flex-shrink: 0;
+  height: 100%;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.row-elem > img {
+  height: 100%;
+}

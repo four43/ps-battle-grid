@@ -7,22 +7,22 @@ describe("Comment", function() {
 		it("Should parse basic full body link", function() {
 			var parts = Comment._parseBody("[Hmm...quite nice actually!](http://i.imgur.com/o3chijc.jpg?1)");
 			assert.equal(parts.bodyText, "Hmm...quite nice actually!");
-			assert.equal(parts.images.source.url, "http://i.imgur.com/o3chijc.jpg?1");
-			assert.equal(parts.images.thumb.url, "http://i.imgur.com/o3chijc.jpg?1");
+			assert.equal(parts.images.source.url, "https://i.imgur.com/o3chijc.jpg?1");
+			assert.equal(parts.images.thumb.url, "https://i.imgur.com/o3chijc.jpg?1");
 		});
 
 		it("Should parse basic full body link with pre text", function() {
 			var parts = Comment._parseBody("Here is what I came up [with](http://i.imgur.com/MpPlMK5.png)");
 			assert.equal(parts.bodyText, "Here is what I came up with");
-			assert.equal(parts.images.source.url, "http://i.imgur.com/MpPlMK5.png");
-			assert.equal(parts.images.thumb.url, "http://i.imgur.com/MpPlMK5.png");
+			assert.equal(parts.images.source.url, "https://i.imgur.com/MpPlMK5.png");
+			assert.equal(parts.images.thumb.url, "https://i.imgur.com/MpPlMK5.png");
 		});
 
 		it("Should parse basic full body link with pre and post text", function() {
 			var parts = Comment._parseBody("Here is what I came up [with](http://i.imgur.com/MpPlMK5.png), pretty cool huh?");
 			assert.equal(parts.bodyText, "Here is what I came up with, pretty cool huh?");
-			assert.equal(parts.images.source.url, "http://i.imgur.com/MpPlMK5.png");
-			assert.equal(parts.images.thumb.url, "http://i.imgur.com/MpPlMK5.png");
+			assert.equal(parts.images.source.url, "https://i.imgur.com/MpPlMK5.png");
+			assert.equal(parts.images.thumb.url, "https://i.imgur.com/MpPlMK5.png");
 		});
 
 		it("Should parse imgur links", function() {
@@ -45,5 +45,12 @@ describe("Comment", function() {
 			assert.equal(parts.images.source.url, "https://i.imgur.com/HJd5nb0.jpg");
 			assert.equal(parts.images.thumb.url, "https://i.imgur.com/HJd5nb0.jpg");
 		});
+
+		it("Should parse imgur image, full website, in markdown", function() {
+			var parts = Comment._parseBody("[Just watching the world burn](http://imgur.com/qHDJ0SP)");
+			assert.equal(parts.bodyText, "Just watching the world burn");
+			assert.equal(parts.images.source.url, "https://i.imgur.com/qHDJ0SP.jpg");
+			assert.equal(parts.images.thumb.url, "https://i.imgur.com/qHDJ0SP.jpg");
+		})
 	});
 });
