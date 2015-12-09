@@ -7,22 +7,22 @@ describe("Comment", function() {
 		it("Should parse basic full body link", function() {
 			var parts = Comment._parseBody("[Hmm...quite nice actually!](http://i.imgur.com/o3chijc.jpg?1)");
 			assert.equal(parts.bodyText, "Hmm...quite nice actually!");
-			assert.equal(parts.images.source.url, "https://i.imgur.com/o3chijc.jpg?1");
-			assert.equal(parts.images.thumb.url, "https://i.imgur.com/o3chijc.jpg?1");
+			assert.equal(parts.images.source.url, "https://i.imgur.com/o3chijc.jpg");
+			assert.equal(parts.images.thumb.url, "https://i.imgur.com/o3chijc.jpg");
 		});
 
 		it("Should parse basic full body link with pre text", function() {
 			var parts = Comment._parseBody("Here is what I came up [with](http://i.imgur.com/MpPlMK5.png)");
 			assert.equal(parts.bodyText, "Here is what I came up with");
-			assert.equal(parts.images.source.url, "https://i.imgur.com/MpPlMK5.png");
-			assert.equal(parts.images.thumb.url, "https://i.imgur.com/MpPlMK5.png");
+			assert.equal(parts.images.source.url, "https://i.imgur.com/MpPlMK5.jpg");
+			assert.equal(parts.images.thumb.url, "https://i.imgur.com/MpPlMK5.jpg");
 		});
 
 		it("Should parse basic full body link with pre and post text", function() {
 			var parts = Comment._parseBody("Here is what I came up [with](http://i.imgur.com/MpPlMK5.png), pretty cool huh?");
 			assert.equal(parts.bodyText, "Here is what I came up with, pretty cool huh?");
-			assert.equal(parts.images.source.url, "https://i.imgur.com/MpPlMK5.png");
-			assert.equal(parts.images.thumb.url, "https://i.imgur.com/MpPlMK5.png");
+			assert.equal(parts.images.source.url, "https://i.imgur.com/MpPlMK5.jpg");
+			assert.equal(parts.images.thumb.url, "https://i.imgur.com/MpPlMK5.jpg");
 		});
 
 		it("Should parse imgur links", function() {
