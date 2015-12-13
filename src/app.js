@@ -20,16 +20,16 @@ export default class App extends Component {
 	}
 
 	getPosts(offset=0) {
-		console.log("Fetching posts...");
+		//console.log("Fetching posts...");
 		var postRepo = new PostRepo(this.props.psBattleUrl);
 		var commentsRepo = new CommentsRepo(this.props.commentUrlTemplate);
 		postRepo.fetchAll((err, posts) => {
-			console.log("Got posts, setting to state", posts);
+			//console.log("Got posts, setting to state", posts);
 			this.setState({posts: posts});
 			posts.map((post) => {
 				commentsRepo.findByPost(post, (err, comments) => {
 					post.comments = comments;
-					console.log("Updating posts with comments");
+					//console.log("Updating posts with comments");
 					this.setState({posts: posts});
 				});
 			})

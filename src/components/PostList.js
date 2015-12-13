@@ -5,9 +5,9 @@ const Post = require('./Post');
 
 export default class PostList extends Component {
 	render() {
-		console.log("[PostList] Rendering ", this.props.posts);
+		//console.log("[PostList] Rendering ", this.props.posts);
 		var posts = this.props.posts.map((post) => {
-			post.key = post.id
+			post.key = post.id;
 			return (
 				<Post {...post}/>
 			);
