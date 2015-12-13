@@ -29,16 +29,15 @@ header {
 
 .post {
   height: 100%;
-  overflow-x: scroll;
+  overflow: hidden;
   overflow-scrolling: touch;
   -webkit-overflow-scrolling: touch;
   white-space: nowrap;
 
   figure {
-    box-sizing: border-box;
     display: inline-block;
     flex-shrink: 0;
-    height: 100%;
+    height: 95%;
     padding-left: 10px;
     padding-right: 10px;
     overflow: hidden;
@@ -50,7 +49,6 @@ header {
 
     img {
       height: 100%;
-      border: 2px #111 solid;
     }
 
     figcaption {

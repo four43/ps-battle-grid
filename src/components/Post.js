@@ -7,6 +7,7 @@ export default class Post extends Component {
 
 	componentDidUpdate() {
 		console.log("Starting PhotoSwipe on: #post-"+this.props.id);
+		dragscroll.reset();
 	}
 
 	render() {
@@ -24,7 +25,7 @@ export default class Post extends Component {
 			// Thanks to: http://photoswipe.com/documentation/seo.html
 			return (
 				<div className="post-container">
-					<div id={"post-"+id} className="post" itemScope itemType="http://schema.org/ImageGallery">
+					<div id={"post-"+id} className="post dragscroll" itemScope itemType="http://schema.org/ImageGallery">
 						{baseImage}
 						{comments}
 					</div>
