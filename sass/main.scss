@@ -29,7 +29,7 @@ header {
 
 .post {
   height: 100%;
-  overflow: hidden;
+  overflow-x: scroll;
   overflow-scrolling: touch;
   -webkit-overflow-scrolling: touch;
   white-space: nowrap;
@@ -55,4 +55,28 @@ header {
       display: none;
     }
   }
+}
+
+/* Let's get this party started */
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}::-webkit-scrollbar-thumb {
+   -webkit-border-radius: 3px;
+   border-radius: 3px;
+   background: rgba(20,20,20,0.8);
+   -webkit-box-shadow: inset 0 0 6px rgba(10,10,10,0.5);
+ }
+::-webkit-scrollbar-thumb:window-inactive {
+
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+  }
+
+  /* Handle */
+  background: rgba(102, 102, 102, 0.4);
 }
