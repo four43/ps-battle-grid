@@ -37,12 +37,14 @@ export default class App extends Component {
 	}
 
 	render() {
-		var portListConfig = {
+		var postListConfig = {
 			posts: this.state.posts
 		};
+
+		//@TODO: Add hot, best, etc. buttons
 		return (
 			<div>
-				<PostList {...portListConfig} />
+				<PostList {...postListConfig} />
 			</div>
 		);
 	}

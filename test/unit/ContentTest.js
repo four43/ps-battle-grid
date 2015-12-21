@@ -39,6 +39,13 @@ describe("Contnet", function() {
 			assert.equal(parts.images.thumb.url, "https://i.imgur.com/J6xPYBjm.jpg");
 		});
 
+		it("Should parse punctuation in comment area", function() {
+			var parts = Content.parseBody("[Stephen Cating.](http://i.imgur.com/PwPyh1W.jpg)");
+			assert.equal(parts.bodyText, "Stephen Cating.");
+			assert.equal(parts.images.source.url, "https://i.imgur.com/PwPyh1W.jpg");
+			assert.equal(parts.images.thumb.url, "https://i.imgur.com/PwPyh1Wm.jpg");
+		});
+
 		it("Should parse imgur links", function() {
 			var parts = Content.parseBody("Some before https://i.imgur.com/4fVCo5v.jpg and after text");
 			assert.equal(parts.bodyText, "Some before and after text");

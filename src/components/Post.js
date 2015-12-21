@@ -6,26 +6,41 @@ const ImagePost = require("./ImagePost");
 export default class Post extends Component {
 
 	componentDidUpdate() {
-		console.log("Starting PhotoSwipe on: #post-"+this.props.id);
 		dragscroll.reset();
 	}
 
-	render() {
-		if(this.props.id) {
-			var id = this.props.id;
-			var baseImage = (<ImagePost {...this.props} key={"post-main-" + this.props.id}/>);
+	imageClicked(post) {
+		console.log("Image Clicked (Post)");
+		this.props.imageDetailCallback(post);
+	}
 
-			var comments = this.props.comments.map((comment) => {
-				comment.key = "comment-"+comment.id;
+	render() {
+		var post = this.props.post;
+
+		if (post && post.id) {
+			var id = post.id;
+			var baseImage = (
+				<ImagePost
+					post={post}
+					key={"post-main-" + post.id}
+					imageClickCallback={this.imageClicked.bind(this)}
+				/>);
+
+			var comments = post.comments.map((comment) => {
 				return (
-					<ImagePost {...comment}/>
+					<ImagePost
+							post={comment}
+							key={"comment-" + comment.id}
+					        imageClickCallback={this.imageClicked.bind(this)}
+					/>
 				);
 			});
 
 			// Thanks to: http://photoswipe.com/documentation/seo.html
 			return (
 				<div className="post-container">
-					<div id={"post-"+id} className="post dragscroll" itemScope itemType="http://schema.org/ImageGallery">
+					<div id={"post-"+id} className="post dragscroll" itemScope
+					     itemType="http://schema.org/ImageGallery">
 						{baseImage}
 						{comments}
 					</div>
