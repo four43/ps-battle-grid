@@ -32,6 +32,13 @@ describe("Contnet", function() {
 			assert.equal(parts.images.thumb.url, "https://i.imgur.com/MpPlMK5m.jpg");
 		});
 
+		it("Should remove markdown even if there is a space (bad markdown)", function() {
+			var parts = Content.parseBody("[ANGRY hippos] (http://i.imgur.com/J6xPYBj.jpg)");
+			assert.equal(parts.bodyText, "ANGRY hippos");
+			assert.equal(parts.images.source.url, "https://i.imgur.com/J6xPYBj.jpg");
+			assert.equal(parts.images.thumb.url, "https://i.imgur.com/J6xPYBjm.jpg");
+		});
+
 		it("Should parse imgur links", function() {
 			var parts = Content.parseBody("Some before https://i.imgur.com/4fVCo5v.jpg and after text");
 			assert.equal(parts.bodyText, "Some before and after text");
