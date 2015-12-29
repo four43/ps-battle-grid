@@ -80,5 +80,12 @@ describe("Contnet", function() {
 			assert.equal(parts.images.source.url, "https://i.imgur.com/c5EoP9E.jpg");
 			assert.equal(parts.images.thumb.url, "https://i.imgur.com/c5EoP9Em.jpg");
 		});
+
+		it("Should ignore albums (not a good way to grab first image yet", function() {
+			var parts = Content.parseBody("[Highlighting the the furniture, its reflections, and some of the second reflections.](http://imgur.com/a/dyhSN)  I'm pretty sure both the table and chairs are mirrored, but the tabletop and chair seat are empty holes.");
+			assert.equal(parts.bodyText, "Highlighting the the furniture, its reflections, and some of the second reflections. I'm pretty sure both the table and chairs are mirrored, but the tabletop and chair seat are empty holes.");
+			assert.equal(parts.images.source.url, null);
+			assert.equal(parts.images.thumb.url, null);
+		});
 	});
 });
